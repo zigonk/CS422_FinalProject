@@ -184,3 +184,5 @@ tags
 *.xhtml
 
 # End of https://www.toptal.com/developers/gitignore/api/python,vim,visualstudiocode,web
+
+client/node_modules
