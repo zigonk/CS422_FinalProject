@@ -1,0 +1,33 @@
+[{
+  "id": "1",
+  "name": "InputLayer_1",
+  "type": "INPUT",
+  "inputShape": [11, 11, 3],
+  "outputShape": [11, 11, 3],
+  "activateFunc": "",
+  "lossFunc": "",
+  "optimizer": "",
+  "lr": null
+  },
+  {
+  "id": "2",
+  "name": "HiddenLayer_1",
+  "type": "HIDDEN",
+  "inputShape": [11, 11, 3],
+  "outputShape": [11, 11, 3],
+  "activateFunc": "SIGMOID",
+  "lossFunc": "",
+  "optimizer": "",
+  "lr": null
+  },
+  {
+  "id": "3",
+  "name": "OutputLayer_1",
+  "type": "OUTPUT",
+  "inputShape": [11, 11, 3],
+  "outputShape": [3],
+  "activateFunc": "SOFTMAX",
+  "lossFunc": "MSELoss",
+  "optimizer": "",
+  "lr": null
+  }]
