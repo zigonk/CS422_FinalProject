@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "type": "INPUT",
+    "operations": "ADD"
+  },
+  {
+    "id": 2,
+    "type": "INPUT",
+    "operations": "MUL"
+  },
+  {
+    "id": 3,
+    "type": "OUTPUT"
+  }
+]

@@ -1,33 +1,37 @@
-[{
-  "id": "1",
-  "name": "InputLayer_1",
-  "type": "INPUT",
-  "inputShape": [11, 11, 3],
-  "outputShape": [11, 11, 3],
-  "activateFunc": "",
-  "lossFunc": "",
-  "optimizer": "",
-  "lr": null
+[
+  {
+    "name": "CONV2D",
+    "properties": {
+      "inChannels": 3,
+      "outChannels": 10,
+      "kernelSize": 3
+    }
   },
   {
-  "id": "2",
-  "name": "HiddenLayer_1",
-  "type": "HIDDEN",
-  "inputShape": [11, 11, 3],
-  "outputShape": [11, 11, 3],
-  "activateFunc": "SIGMOID",
-  "lossFunc": "",
-  "optimizer": "",
-  "lr": null
+    "name": "LINEAR",
+    "properties": {
+      "inFeatures": 128,
+      "outFeatures": 64
+    }
   },
   {
-  "id": "3",
-  "name": "OutputLayer_1",
-  "type": "OUTPUT",
-  "inputShape": [11, 11, 3],
-  "outputShape": [3],
-  "activateFunc": "SOFTMAX",
-  "lossFunc": "MSELoss",
-  "optimizer": "",
-  "lr": null
-  }]
+    "name": "RESHAPE",
+    "properties": { }
+  },
+  {
+    "name": "RELU",
+    "properties": { }
+  },
+  {
+    "name": "SOFTMAX",
+    "properties": { }
+  },
+  {
+    "name": "L1LOSS",
+    "properties": { }
+  },
+  {
+    "name": "MSELOSS",
+    "properties": { }
+  }
+]
