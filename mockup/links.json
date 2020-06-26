@@ -1,29 +1,6 @@
-[{
-  "type": "CONV2D",
-  "parameter": {
-    "in": 2,
-    "out": 3,
-    "kernel": 3
-  },
-  "sourceID": "1",
-  "targetID": "2"
-},
-{
-  "type": "LINEAR",
-  "parameter": {
-    "in": 2,
-    "out": 3,
-    "kernel": 3
-  },
-  "sourceID": "2",
-  "targetID": "3"
-},
-{
-  "type": "MAXPOOL2D",
-  "parameter": {
-    "kernel": 3
-  },
-  "sourceID": "1",
-  "targetID": "2"
-}
+[
+  {
+    "inputPort": 1,
+    "outputPort": 2
+  }
 ]
