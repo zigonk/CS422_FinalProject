@@ -1,0 +1,82 @@
+[
+   {
+      "id":1,
+      "name":"LINEAR",
+      "properties":{
+         "in_features":64,
+         "out_features":128
+      },
+      "port":{
+
+      }
+   },
+   {
+      "id":2,
+      "name":"LINEAR",
+      "properties":{
+         "in_features":128,
+         "out_features":256
+      },
+      "port":{
+
+      }
+   },
+   {
+      "id":3,
+      "name":"LINEAR",
+      "properties":{
+         "in_features":256,
+         "out_features":512
+      },
+      "port":{
+
+      }
+   },
+   {
+      "id":4,
+      "name":"LINEAR",
+      "properties":{
+         "in_features":512,
+         "out_features":512
+      },
+      "port":{
+
+      }
+   },
+   {
+      "id":5,
+      "name":"LINEAR",
+      "properties":{
+         "in_features":512,
+         "out_features":512
+      },
+      "port":{
+
+      }
+   },
+   {
+      "id":6,
+      "name":"LINEAR",
+      "properties":{
+         "in_features":512,
+         "out_features":512
+      },
+      "port":{
+
+      }
+   },
+   {
+       "id":7,
+       "name":"ADD",
+       "properties":{
+       }
+   },
+   {
+       "id":8,
+       "name":"LINEAR",
+       "properties":{
+           "in_features":512,
+           "out_features":10
+       }
+   }
+]
