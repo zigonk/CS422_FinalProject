@@ -1,38 +1,38 @@
 [
    {
-      "s_id":1,
-      "e_id":2
+      "sourceId":"a",
+      "targetId":"b"
    },
    {
-      "s_id":2,
-      "e_id":3
+      "sourceId":"b",
+      "targetId":"c"
    },
    {
-      "s_id":3,
-      "e_id":4
+      "sourceId":"c",
+      "targetId":"d"
    },
    {
-      "s_id":3,
-      "e_id":5
+      "sourceId":"c",
+      "targetId":"e"
    },
    {
-      "s_id":3,
-      "e_id":6
+      "sourceId":"c",
+      "targetId":"f"
    },
    {
-      "s_id":4,
-      "e_id":7
+      "sourceId":"d",
+      "targetId":"g"
    },
    {
-      "s_id":5,
-      "e_id":7
+      "sourceId":"e",
+      "targetId":"g"
    },
    {
-      "s_id":6,
-      "e_id":7
+      "sourceId":"f",
+      "targetId":"g"
    },
    {
-      "s_id":7,
-      "e_id":8
+      "sourceId":"g",
+      "targetId":"h"
    }
 ]

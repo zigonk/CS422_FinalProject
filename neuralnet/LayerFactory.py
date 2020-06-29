@@ -5,6 +5,7 @@ from inspect import signature
 from typing import Dict, List, Union
 
 
+
 class Layer(nn.Module):
     """
     A Layer in the neural net, contains one input port and ouput port
@@ -12,15 +13,26 @@ class Layer(nn.Module):
     Parameters:
     config:
         Layer information dictionary
+        ```
+        {
+            "properties":{
+                "in_features":0,
+                "out_features":0
+            },
+            "id":"b0291176-0ba9-4e98-8b6b-ca6f37302c02",
+            "name":"LinearLayer_1",
+            "type":"LINEAR"
+        }
+        ```
     """
     def __init__(self, config: Dict):
         super().__init__()
-        self.input = None # Input Tensor
+        self.input = None  # Input Tensor
         self.output = None  # Output Tensor
 
         params = config['properties']
         # Underlying layer for computation, e.g Convolution2D
-        self.layer = MODULE_MAPPING[config['name']](**params)
+        self.layer = MODULE_MAPPING[config['type']](**params)
 
         self.original_in_deg = 0
         self.current_in_deg = 0
@@ -49,7 +61,6 @@ class Layer(nn.Module):
         self.output = self.layer(self.input)
 
 
-
 class LayerFactory:
     @staticmethod
     def create_layer(layer_config: Dict) -> Layer:
@@ -60,11 +71,22 @@ class LayerFactory:
         ----------
         layer_config : dict
             Layer config dictionary
+            ```
+            {
+                "properties":{
+                    "in_features":0,
+                    "out_features":0
+                },
+                "id":"b0291176-0ba9-4e98-8b6b-ca6f37302c02",
+                "name":"LinearLayer_1",
+                "type":"LINEAR"
+            },
+            ```
         """
-        layer_name = layer_config['name']
+        layer_type = layer_config['type']
 
-        if layer_name not in MODULE_MAPPING:
-            raise ValueError(f'{layer_name} is not a supported layer name.')
+        if layer_type not in MODULE_MAPPING:
+            raise ValueError(f'Not supported layer type {layer_type}.')
 
         return Layer(layer_config)
 
@@ -75,6 +97,7 @@ class Add(nn.Module):
 
     def forward(self, *args):
         return sum(*args)
+
 
 class Reshape(nn.Module):
     """
@@ -157,7 +180,6 @@ MODULE_MAPPING = {
     'ADD': Add,
     # 'RESHAPE': Reshape,
 }
-
 
 if __name__ == "__main__":
     sig = signature(nn.Conv2d)

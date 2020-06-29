@@ -1,7 +1,7 @@
 [
    {
-      "id":1,
-      "name":"LINEAR",
+      "id":"a",
+      "type":"LINEAR",
       "properties":{
          "in_features":64,
          "out_features":128
@@ -11,8 +11,8 @@
       }
    },
    {
-      "id":2,
-      "name":"LINEAR",
+      "id": "b",
+      "type":"LINEAR",
       "properties":{
          "in_features":128,
          "out_features":256
@@ -22,8 +22,8 @@
       }
    },
    {
-      "id":3,
-      "name":"LINEAR",
+      "id": "c",
+      "type":"LINEAR",
       "properties":{
          "in_features":256,
          "out_features":512
@@ -33,8 +33,8 @@
       }
    },
    {
-      "id":4,
-      "name":"LINEAR",
+      "id": "d",
+      "type":"LINEAR",
       "properties":{
          "in_features":512,
          "out_features":512
@@ -44,8 +44,8 @@
       }
    },
    {
-      "id":5,
-      "name":"LINEAR",
+      "id" : "e",
+      "type":"LINEAR",
       "properties":{
          "in_features":512,
          "out_features":512
@@ -55,8 +55,8 @@
       }
    },
    {
-      "id":6,
-      "name":"LINEAR",
+      "id": "f",
+      "type":"LINEAR",
       "properties":{
          "in_features":512,
          "out_features":512
@@ -66,14 +66,14 @@
       }
    },
    {
-       "id":7,
-       "name":"ADD",
+       "id": "g",
+       "type":"ADD",
        "properties":{
        }
    },
    {
-       "id":8,
-       "name":"LINEAR",
+       "id": "h",
+       "type":"LINEAR",
        "properties":{
            "in_features":512,
            "out_features":10

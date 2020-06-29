@@ -34,7 +34,7 @@ class NeuralNet(nn.Module):
 
         # Set the indegree for each layer
         for layer_id, layer in self.layer_instace.items():
-            layer.original_in_deg = self.graph.in_deg[int(layer_id)]
+            layer.original_in_deg = self.graph.in_deg[self.graph.l2v[layer_id]]
             layer.current_in_deg = layer.original_in_deg
 
     def _create_layers(self) -> None:
@@ -45,8 +45,7 @@ class NeuralNet(nn.Module):
 
         for layer in self.layers:
             instance = LayerFactory.create_layer(layer)
-            # TODO: Make layer id a string instead of int
-            layer_id = str(layer['id'])
+            layer_id = layer['id']
             instances[layer_id] = instance
 
         self.layer_instace = nn.ModuleDict(instances)
@@ -78,16 +77,18 @@ class NeuralNet(nn.Module):
             Input tensor
         """
 
-        layer = self.layer_instace[str(v)]
+        layer = self.layer_instace[self.graph.v2l[v]]
         if layer.current_in_deg >  0:
             layer.current_in_deg -= 1
         layer.receive_input(inp)
 
-        # Check receive enough input
+        # If current layer receives enough input then perform computation
         if layer.current_in_deg == 0:
             layer()
-            for n_v in self.graph.adj_list[v]:
-                self._dfs_foward(n_v, layer.output)
+
+            # Send the output to next layers
+            for next_v in self.graph.adj_list[v]:
+                self._dfs_foward(next_v, layer.output)
 
     def _reset_layers_indeg(self) -> None:
         for layer in self.layer_instace.values():
@@ -105,7 +106,10 @@ class NeuralNet(nn.Module):
         self._reset_layers_input_cache()
         self._dfs_foward(self.graph.topo_order[0], inp)
 
-        return self.layer_instace[str(self.graph.topo_order[-1])].output
+        last_layer_vertex = self.graph.topo_order[-1]
+        last_layer_id = self.graph.v2l[last_layer_vertex]
+
+        return self.layer_instace[last_layer_id].output
 
 
 if __name__ == "__main__":
