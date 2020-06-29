@@ -1,10 +1,10 @@
 import NNLayer from './NNLayer'
 
-export interface ReshapeProperties {
+export interface MulProperties {
 }
 
-export default class ReshapeLayer extends NNLayer {
-  protected _properties: ReshapeProperties;
+export default class MulLayer extends NNLayer {
+  protected _properties: MulProperties;
   constructor(props: any) {
     super(props);
     this._type = props.type;

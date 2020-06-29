@@ -10,16 +10,14 @@ export interface TrayItemWidgetProps {
 // namespace S {
 	export const Tray = styled.div<{ color: string }>`
 		color: white;
-		font-family: Helvetica, Arial;
 		padding: 5px;
-		margin: 20px 30px 20px 30px;
+		margin: 20px 0px 20px 0px;
 		line-height: 40px;
 		height: 40px;
 		background-color: ${(p) => p.color};
 		text-align: center;
 		color: white;
 		border-radius: 5px;
-		margin-bottom: 2px;
 		cursor: pointer;
 	`;
 // }

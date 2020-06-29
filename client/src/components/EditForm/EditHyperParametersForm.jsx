@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
-import { keyToLabel } from "../Utils";
+import { optimizerList } from "../Utils";
 import Input from "../Input";
 import styled from "@emotion/styled";
 import Button from "../Button";
@@ -60,36 +60,33 @@ export const Select = styled.select`
 export default class EditLayerForm extends Component {
   render() {
     const {
-      data,
-      data: { properties },
+      data: { lr, optimizer },
+      updateValue,
     } = this.props;
-    const opts = data.getOptions();
     return (
       <div>
-        <Header>Layer information</Header>
         <Formik
           initialValues={{
-            name: opts.name || "",
-            properties: properties || {},
+            lr: lr || 0,
+            optimizer: optimizer || "",
           }}
           enableReinitialize
           onSubmit={(value, actions) => {
-            data.updateValue(value);
+            actions.setSubmitting(true)
+            updateValue(value);
+            actions.setSubmitting(false)
           }}
         >
           {(props) => (
             <Form>
-              <Field component={Input} label="Layer name" name="name" />
-              {props.values.properties &&
-                Object.keys(props.values.properties).map((keys, ind) => (
-                  <Field
-                    key={ind}
-                    component={Input}
-                    label={keyToLabel(keys)}
-                    name={`properties.${keys}`}
-                  />
+              <Field component={Input} label="Learning rate" name="lr" />
+              <Label>Optimizer</Label>
+              <Field component={Select} name="lr">
+                {optimizerList.map((opt, ind) => (
+                  <option key={ind} value={opt.value}>{opt.label}</option>
                 ))}
-              <Button title="Save" type="submit" style={{ width: "100%" }} />
+              </Field>
+              <Button title="Create Model" type="submit" style={{ width: "100%" }} />
             </Form>
           )}
         </Formik>

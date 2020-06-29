@@ -25,4 +25,11 @@ export default class NNLayer extends DefaultNodeModel {
   updateValue(data: any) {
     this.getOptions().name = data.name;
   }
+  serialize():any {
+    return {
+      id: this.getOptions().id,
+      name: this.getOptions().name,
+      type: this._type
+    }
+  }
 }

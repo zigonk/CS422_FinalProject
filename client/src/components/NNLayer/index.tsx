@@ -1,26 +1,42 @@
-import HiddenLayer from './HiddenLayer'
-import OutputLayer from './OutputLayer'
-import InputLayer from './InputLayer'
-
+import ConvLayer from './ConvLayer'
+import LinearLayer from './LinearLayer'
+import ReLU from './ReLU'
+import Reshape from './Reshape'
+import Softmax from './Softmax'
+import Add from './Add'
+import Mul from './Mul'
+import Concat from './Concat'
 class NNLayerFactory {
-  static nHiddenLayer = 0;
-  static nOutputLayer = 0;
-  static nInputLayer = 0;
-  public createNode(props : any) : any {
-    switch (props.type)
-    {
-      case 'HIDDEN':
-        NNLayerFactory.nHiddenLayer += 1;
-        props.name = "HiddenLayer_" + NNLayerFactory.nHiddenLayer
-        return new HiddenLayer(props);
-      case 'OUTPUT':
-        NNLayerFactory.nOutputLayer += 1;
-        props.name = "OutputLayer_" + NNLayerFactory.nOutputLayer
-        return new OutputLayer(props);
-      case 'INPUT':
-        NNLayerFactory.nInputLayer += 1;
-        props.name = "InputLayer_"+NNLayerFactory.nInputLayer
-        return new InputLayer(props);
+  static nConvLayer = 0;
+  static nLinearLayer = 0;
+  public createNode(props: any): any {
+    switch (props.type) {
+      case 'CONV2D':
+        NNLayerFactory.nConvLayer += 1;
+        props.name = "ConvLayer_" + NNLayerFactory.nConvLayer
+        return new ConvLayer(props);
+      case 'LINEAR':
+        NNLayerFactory.nLinearLayer += 1;
+        props.name = "LinearLayer_" + NNLayerFactory.nLinearLayer
+        return new LinearLayer(props);
+      case 'RELU':
+        props.name = "ReLU";
+        return new ReLU(props);
+      case 'RESHAPE':
+        props.name = "Reshape";
+        return new Reshape(props);
+      case 'SOFTMAX':
+        props.name = "Softmax";
+        return new Softmax(props);
+      case 'ADD':
+        props.name = "Add";
+        return new Add(props);
+      case 'MUL':
+        props.name = "Mul";
+        return new Mul(props);
+        case 'CONCAT':
+          props.name = "Concat";
+          return new Concat(props);
     }
   }
 }
