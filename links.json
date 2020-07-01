@@ -12,20 +12,12 @@
       "targetId":"d"
    },
    {
-      "sourceId":"c",
+      "sourceId":"d",
       "targetId":"e"
    },
    {
-      "sourceId":"c",
-      "targetId":"f"
-   },
-   {
-      "sourceId":"d",
-      "targetId":"g"
-   },
-   {
       "sourceId":"e",
-      "targetId":"g"
+      "targetId":"f"
    },
    {
       "sourceId":"f",
@@ -34,5 +26,9 @@
    {
       "sourceId":"g",
       "targetId":"h"
+   },
+   {
+      "sourceId":"h",
+      "targetId":"i"
    }
 ]

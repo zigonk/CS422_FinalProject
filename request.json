@@ -1,0 +1,124 @@
+{
+    "id" : "x",
+    "layers": [
+        {
+            "id":"a",
+            "type":"CONV2D",
+            "properties":{
+                "in_channels":1,
+                "out_channels": 6,
+                "kernel_size" : 5
+            },
+            "port":{
+            }
+        },
+        {
+            "id": "b",
+            "type":"RELU",
+            "properties":{
+            },
+            "port":{
+
+            }
+        },
+        {
+            "id": "c",
+            "type":"MAXPOOL2D",
+            "properties":{
+                "kernel_size":2,
+                "stride":2
+            },
+            "port":{
+            }
+        },
+        {
+            "id": "d",
+            "type":"CONV2D",
+            "properties":{
+                "in_channels":6,
+                "out_channels":16,
+                "kernel_size":5
+            },
+            "port":{
+            }
+        },
+        {
+            "id" : "e",
+            "type":"RELU",
+            "properties":{
+            },
+            "port":{
+            }
+        },
+        {
+            "id": "f",
+            "type":"MAXPOOL2D",
+            "properties":{
+                "kernel_size" : 2,
+                "stride" : 2
+            },
+            "port":{
+
+            }
+        },
+        {
+            "id": "g",
+            "type":"FLATTEN",
+            "properties":{
+            },
+            "port":{
+
+            }
+        },
+        {
+            "id": "h",
+            "type":"LINEAR",
+            "properties":{
+                "in_features" : 256,
+                "out_features" : 64
+            }
+        },
+        {
+            "id": "i",
+            "type":"LINEAR",
+            "properties":{
+                "in_features":64,
+                "out_features":10
+            }
+        }
+    ],
+    "links" : [
+        {
+            "sourceId":"a",
+            "targetId":"b"
+        },
+        {
+            "sourceId":"b",
+            "targetId":"c"
+        },
+        {
+            "sourceId":"c",
+            "targetId":"d"
+        },
+        {
+            "sourceId":"d",
+            "targetId":"e"
+        },
+        {
+            "sourceId":"e",
+            "targetId":"f"
+        },
+        {
+            "sourceId":"f",
+            "targetId":"g"
+        },
+        {
+            "sourceId":"g",
+            "targetId":"h"
+        },
+        {
+            "sourceId":"h",
+            "targetId":"i"
+        }
+    ]
+}

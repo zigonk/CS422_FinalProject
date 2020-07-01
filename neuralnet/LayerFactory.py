@@ -99,7 +99,7 @@ class Add(nn.Module):
         return sum(*args)
 
 
-class Reshape(nn.Module):
+class Flatten(nn.Module):
     """
     Reshape the input
 
@@ -111,14 +111,20 @@ class Reshape(nn.Module):
         If the output shape = -1, then flatten the output
         Otherwise reshape to corresponding output
     """
-    def __init__(self, in_shape, out_shape):
+    def __init__(self):
         super().__init__()
-        self.in_shape = in_shape
-        self.out_shape = out_shape
 
     def forward(self, X):
+        batch_size, *dimensions = X.shape
 
-        X_out = X.reshape(*self.out_shape)
+
+        flatten_size = 1
+
+        for d in dimensions:
+            flatten_size *= d
+
+        X_out = X.reshape(batch_size, flatten_size)
+
         return X_out
 
 
@@ -168,17 +174,16 @@ def check_valid_config(config, func):
 
 MODULE_MAPPING = {
     'CONV2D': nn.Conv2d,
-    'AVGPOOL2d': nn.AvgPool2d,
-    'MAXPOOL2d': nn.MaxPool2d,
+    'AVGPOOL2D': nn.AvgPool2d,
+    'MAXPOOL2D': nn.MaxPool2d,
     'BATCHNORM1D': nn.BatchNorm1d,
     'LINEAR': nn.Linear,
     'DROPOUT': nn.Dropout,
     'RELU': nn.ReLU,
     'SOFTMAX': nn.Softmax,
-    'L1LOSS': nn.L1Loss,
-    'MSELOSS': nn.MSELoss,
+    'LOGSOFTMAX': nn.LogSoftmax,
     'ADD': Add,
-    # 'RESHAPE': Reshape,
+    'FLATTEN': Flatten,
 }
 
 if __name__ == "__main__":

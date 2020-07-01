@@ -6,6 +6,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from typing import List, Dict
+
 from .Graph import Graph
 from .LayerFactory import LayerFactory
 
@@ -16,19 +18,15 @@ class NeuralNet(nn.Module):
 
     Parameters
     ----------
-    layer_path : str
-        The path to the layer json file
-    link_path: str
-        The path to the link json file
+    layer_path :
+        JSON layer information
+    link_path:
+        JSON link information
     """
-    def __init__(self, layer_path: str, link_path: str):
+    def __init__(self, layer_config: List[Dict], link_config: List[Dict]):
         super().__init__()
-        with open(layer_path) as f:
-            self.layers = json.load(f)
-
-        with open(link_path) as f:
-            self.links = json.load(f)
-
+        self.layers = layer_config
+        self.links = link_config
         self.graph = Graph(self.layers, self.links)
         self._create_layers()
 

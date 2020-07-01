@@ -1,21 +1,19 @@
 [
    {
       "id":"a",
-      "type":"LINEAR",
+      "type":"CONV2D",
       "properties":{
-         "in_features":64,
-         "out_features":128
+         "in_channels":1,
+         "out_channels": 6,
+         "kernel_size" : 5
       },
       "port":{
-
       }
    },
    {
       "id": "b",
-      "type":"LINEAR",
+      "type":"RELU",
       "properties":{
-         "in_features":128,
-         "out_features":256
       },
       "port":{
 
@@ -23,59 +21,66 @@
    },
    {
       "id": "c",
-      "type":"LINEAR",
+      "type":"MAXPOOL2D",
       "properties":{
-         "in_features":256,
-         "out_features":512
+         "kernel_size":2,
+         "stride":2
       },
       "port":{
-
       }
    },
    {
       "id": "d",
-      "type":"LINEAR",
+      "type":"CONV2D",
       "properties":{
-         "in_features":512,
-         "out_features":512
+         "in_channels":6,
+         "out_channels":16,
+         "kernel_size":5
       },
       "port":{
-
       }
    },
    {
       "id" : "e",
-      "type":"LINEAR",
+      "type":"RELU",
       "properties":{
-         "in_features":512,
-         "out_features":512
       },
       "port":{
-
       }
    },
    {
       "id": "f",
-      "type":"LINEAR",
+      "type":"MAXPOOL2D",
       "properties":{
-         "in_features":512,
-         "out_features":512
+          "kernel_size" : 2,
+          "stride" : 2
       },
       "port":{
 
       }
    },
    {
-       "id": "g",
-       "type":"ADD",
-       "properties":{
-       }
+      "id": "g",
+      "type":"FLATTEN",
+      "properties":{
+      },
+      "port":{
+
+      }
    },
    {
        "id": "h",
        "type":"LINEAR",
        "properties":{
-           "in_features":512,
+           "in_features" : 256,
+           "out_features" : 64
+       }
+   },
+   {
+       "id": "i",
+       "type":"LINEAR",
+       "properties":{
+           "in_features":64,
            "out_features":10
        }
    }
